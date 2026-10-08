@@ -1,0 +1,133 @@
+{
+  "name": "My workflow 7",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -416,
+        16
+      ],
+      "id": "4bacba80-aea9-4e71-ba88-8d014ee99f03",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        -496,
+        224
+      ],
+      "id": "478b1781-da1d-435a-8f61-3e44ba5b038f",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "jeXoza601rHAB3Bv",
+          "name": "Google Gemini(PaLM) Api account 8"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.4,
+      "position": [
+        -304,
+        272
+      ],
+      "id": "b626b6ad-e6f9-46b9-9981-d778f4b60e14",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -736,
+        32
+      ],
+      "id": "12795ddd-8523-40e7-a410-840cbf8c3b18",
+      "name": "When chat message received",
+      "webhookId": "59feb26b-2ea3-42d1-ab13-fd66769eab02"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [
+        -64,
+        240
+      ],
+      "id": "640cfbc6-a4b7-48cf-ae5d-0844d916fdeb",
+      "name": "Calculator"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculator": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "a58b1621-e498-4783-8e6f-332f25e12e13",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "adbc613e712c4e81f42c2bc8c608565c0859d7985b9b6f2fced1dbd97c1fa1be"
+  },
+  "nodeGroups": [],
+  "id": "ANYq1RAUM93fiSAj",
+  "tags": []
+}
